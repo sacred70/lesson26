@@ -13,3 +13,9 @@ def map_query(value, data):
     column_number = int(value)
     # делим строку по пробелам и оставляем кусок строки с номером колонки, который и выводим
     return map(lambda x: x.split(' ')[column_number], data)
+
+
+# unique, получает строки
+def unique_query(data, *args, **kwargs):
+    # возвращает уникальные строки
+    return set(data)
