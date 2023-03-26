@@ -19,3 +19,11 @@ def map_query(value, data):
 def unique_query(data, *args, **kwargs):
     # возвращает уникальные строки через множества
     return set(data)
+
+
+# sort, получает порядок сортировки и что сортировать
+def sort_query(value, data):
+    # по умолчанию сортировка по возрастанию
+    reverse = value == 'desc'
+    # возвращает отсортированные данные
+    return sorted(data, reverse=reverse)
