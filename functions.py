@@ -17,5 +17,5 @@ def map_query(value, data):
 
 # unique, получает строки
 def unique_query(data, *args, **kwargs):
-    # возвращает уникальные строки
+    # возвращает уникальные строки через множества
     return set(data)
