@@ -1,4 +1,5 @@
 from functions import filter_query, map_query, unique_query, sort_query
+from typing import Optional, Iterable
 # связываем команды с функциями
 CMD_TO_FUNCTION = {
     'filter': filter_query,
@@ -7,22 +8,25 @@ CMD_TO_FUNCTION = {
     'sort': sort_query,
 }
 
+FILE_NAME = 'data/apache_logs.txt'
+
 
 # функция чтения файла по строчно
-def read_file(file_name):
+def read_file(file_name: str):
     with open(file_name) as f:
         for line in f:
             yield line
 
 
 # конструктор запроса, формирует запрос на основе полученных данных
-def constructor_query(cmd, value, file_name, data):
+def constructor_query(cmd, value, data: Optional[Iterable[str]]):
     if data is None:
-        prepared_data = read_file(file_name)
+        prepared_data = read_file(FILE_NAME)
     else:
         prepared_data = data
 
-    func = CMD_TO_FUNCTION[cmd]
-    func_result = func(value=value, data=prepared_data)
+    func_result = CMD_TO_FUNCTION[cmd](param=value, data=prepared_data)
 
     return list(func_result)
+
+
