@@ -5,10 +5,8 @@ CMD_TO_FUNCTION = {
     'filter': filter_query,
     'unique': unique_query,
     'map': map_query,
-    'sort': sort_query,
+    'sort': sort_query
 }
-
-FILE_NAME = 'data/apache_logs.txt'
 
 
 # функция чтения файла по строчно
@@ -19,9 +17,9 @@ def read_file(file_name: str):
 
 
 # конструктор запроса, формирует запрос на основе полученных данных
-def constructor_query(cmd, value, data: Optional[Iterable[str]]):
+def constructor_query(cmd, value, file_name, data: Optional[Iterable[str]]):
     if data is None:
-        prepared_data = read_file(FILE_NAME)
+        prepared_data = read_file(file_name)
     else:
         prepared_data = data
 
