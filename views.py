@@ -6,13 +6,12 @@ from constructor import constructor_query
 from models import RequestSchema
 
 
-
 main_bp = Blueprint('main', __name__)
 
 
 @main_bp.route("/perform_query", methods=['POST'])
 def perform_query() -> Response:
-    data = request.json
+    data: dict = request.json
     try:
         RequestSchema().load(data)
     except ValidationError as error:
