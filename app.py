@@ -1,6 +1,6 @@
-
 from flask import Flask
 from views import main_bp
+
 
 #  создаем приложение, регистрируем blueprint
 def create_app() -> Flask:

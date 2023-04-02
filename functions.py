@@ -1,6 +1,6 @@
 # функции запросов
 import re
-from typing import Iterable, Iterator, Any, List, Callable
+from typing import Iterable, Iterator, Any, List
 
 
 # filter, получает искомый фрагмент и где искать
