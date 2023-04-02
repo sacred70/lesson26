@@ -2,7 +2,7 @@ from marshmallow import Schema, fields, validate
 # проверка на правильность команд от пользователя
 # список дозволенных команд
 
-VALID_CMD_COMMANDS = ('filter', 'unique', 'map', 'sort')
+VALID_CMD_COMMANDS = ('filter', 'unique', 'map', 'sort', 'regex')
 
 
 class RequestSchema(Schema):

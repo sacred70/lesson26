@@ -1,18 +1,22 @@
-from flask import request, jsonify, Blueprint
+import json
+
+from flask import request, jsonify, Blueprint, Response
 from marshmallow import ValidationError
 from constructor import constructor_query
 from models import RequestSchema
+
+
 
 main_bp = Blueprint('main', __name__)
 
 
 @main_bp.route("/perform_query", methods=['POST'])
-def perform_query():
+def perform_query() -> Response:
     data = request.json
     try:
         RequestSchema().load(data)
     except ValidationError as error:
-        return jsonify(error.messages), 400
+        return Response(response=json.dumps(error.messages), content_type='application/json', status=400)
     first_result = constructor_query(
         cmd=data['cmd1'],
         value=data['value1'],
