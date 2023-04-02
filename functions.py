@@ -1,4 +1,6 @@
 # функции запросов
+import re
+from typing import Iterable, Optional
 
 # filter, получает искомый фрагмент и где искать
 def filter_query(desired, list_text):
@@ -29,7 +31,8 @@ def sort_query(value, data):
     return sorted(data, reverse=reverse)
 
 
-# filter, получает искомый фрагмент и где искать
-def regex_query(desired, list_text):
+# filter, получает искомый фрагмент и где искать(поиск по регулярным выражениям)
+def regex_query(value: str, data: Iterable[str]):
+    pattern = re.compile(value)
     # возвращает список строк с совпадениями
-    return list(filter(lambda x: desired in x, list_text))
+    return filter(lambda x: re.search(pattern, x), data)
