@@ -27,3 +27,9 @@ def sort_query(value, data):
     reverse = value == 'desc'
     # возвращает отсортированные данные
     return sorted(data, reverse=reverse)
+
+
+# filter, получает искомый фрагмент и где искать
+def regex_query(desired, list_text):
+    # возвращает список строк с совпадениями
+    return list(filter(lambda x: desired in x, list_text))
